@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from json import loads
 from PIL import Image, ImageFont, ImageDraw
+from rembg import remove
 
 class Page():
     def __init__(self) -> None:
@@ -30,6 +31,23 @@ class Sidebar():
                                                      'margin-bottom': '30px',
                                                      'padding-left': '30px'}}
     
+    # def text_on_image(image, text, font_size, color):
+    #     img = Image.open(image)
+    #     font = ImageFont.truetype('arial.ttf', font_size)
+    #     draw = ImageDraw.Draw(img)
+
+    #     iw, ih = img.size
+    #     fw, fh = font.getsize(text)
+
+    #     draw.text(
+    #         ((iw - fw) / 2, (ih - fh) / 2),
+    #         text,
+    #         fill=color,
+    #         font=font
+    #     )
+
+    #     img.save('last_image.jpg')
+
     def view_page(self):
         with st.sidebar:
             tabs = on_hover_tabs(tabName= self.sidebar_options, 
@@ -78,20 +96,8 @@ class Sidebar():
                 st.error("Ainda não tem nenhum arquivo inserido!")
 
         elif tabs == 'Marca De dágua':
-            st.title("Marca dágua com Pillow")
-            
-            image = st.file_uploader('Uma Imagem', type=['jpg'])
-            text = st.text_input('Sua marca dágua')
-            color = st.selectbox(
-                'Cor da sua marca', ['black', 'white', 'red', 'green', 'blue']
-            )
-            font_size = st.number_input('Tamanho da Fonte', min_value=8)
-
-            if image:
-                result = st.button('Aplicar', type='primary' )
-            else:
-                st.warning('Ainda não recebeu uma imagem')
-
+          st.title("?")
+            ####################################
         elif tabs == 'Widgets':
             st.title(tabs)
             
@@ -132,9 +138,6 @@ class Sidebar():
             'You selected: ', option
 
 
-    def text_on_image(image, text, font_size, color):
-        img = Image.open(image)
-        font = ImageFont.truetype('Segoe UI', font_size)
-        
+
 
 App = Page()
